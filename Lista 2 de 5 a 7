@@ -1,0 +1,84 @@
+EXERCICIO 5
+
+function somaMatriz(matriz) {
+    let soma = 0;
+
+    for (let i = 0; i < matriz.length; i++) {
+        for (let j = 0; j < matriz[i].length; j++) {
+            soma += matriz[i][j];
+        }
+    }
+
+    return soma;
+}
+
+// Exemplo de uso:
+const matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+const resultado = somaMatriz(matriz);
+console.log(resultado); // 45
+------------------------------------
+EXERCICIO 6 
+
+function substituirElemento(array, valorAntigo, novoValor) {
+    return array.map(elemento => (elemento === valorAntigo ? novoValor : elemento));
+}
+
+// Exemplo de uso:
+const numeros = [1, 2, 3, 2, 4, 2];
+const resultado = substituirElemento(numeros, 2, 5);
+console.log(resultado); // [1, 5, 3, 5, 4, 5]
+------------------------------------------------------
+EXERCICIO 7
+
+function multiplicarMatrizes(matrizA, matrizB) {
+    const linhasA = matrizA.length;
+    const colunasA = matrizA[0].length;
+    const linhasB = matrizB.length;
+    const colunasB = matrizB[0].length;
+
+    // Verifica se a multiplicação é possível
+    if (colunasA !== linhasB) {
+        throw new Error('O número de colunas da primeira matriz deve ser igual ao número de linhas da segunda.');
+    }
+
+    // Cria a matriz resultado
+    const resultado = Array.from({ length: linhasA }, () => Array(colunasB).fill(0));
+
+    // Multiplicação das matrizes
+    for (let i = 0; i < linhasA; i++) {
+        for (let j = 0; j < colunasB; j++) {
+            for (let k = 0; k < colunasA; k++) {
+                resultado[i][j] += matrizA[i][k] * matrizB[k][j];
+            }
+        }
+    }
+
+    return resultado;
+}
+
+// Exemplo de uso:
+const matrizA = [
+    [1, 2, 3],
+    [4, 5, 6]
+];
+
+const matrizB = [
+    [7, 8],
+    [9, 10],
+    [11, 12]
+];
+
+const resultado = multiplicarMatrizes(matrizA, matrizB);
+console.log(resultado);
+/*
+[
+    [ 58, 64 ],
+    [139, 154]
+]
+*/
+------------------------------------------------------------------------
